@@ -1,7 +1,7 @@
 import styles from './SearchForm.module.css';
 import SearchBtnIcon from "../../assets/search-btn-icon.svg";
 
-function SearchForm() {;
+function SearchForm() {
 
   return (
     <form className={styles.searchForm}>
