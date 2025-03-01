@@ -11,4 +11,10 @@ const enum Status {
   STOPPED = "STOPPED",
 }
 
-export { Type, Status };
+const enum Paths {
+  DASHBOARD = "/dashboard",
+  RESULTS = "/results",
+  FINALIZE = "/finalize",
+}
+
+export { Type, Status, Paths };
