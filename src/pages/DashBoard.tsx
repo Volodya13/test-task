@@ -1,9 +1,10 @@
+import DataList from "../components/DataList/DataList.tsx";
 
 function DashBoard() {
 
   return (
     <>
-      <h1>Sites</h1>
+      <DataList/>
     </>
   );
 }

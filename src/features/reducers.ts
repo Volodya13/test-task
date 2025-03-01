@@ -1,6 +1,6 @@
 import {ActionProps, Site, StateProps, Test} from "../utils/interfaces.ts";
 
-const initialState = {
+const initialState: StateProps = {
   sites: [],
   tests: []
 };

@@ -1,0 +1,15 @@
+.dataList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+
+  .btnResults {
+    background-color: #2ee5ac;
+  }
+
+  .btnFinalize {
+    background-color: #7d7d7d;
+  }
+}
