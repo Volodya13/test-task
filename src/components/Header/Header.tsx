@@ -1,5 +1,5 @@
 import styles from './Header.module.css';
-import SearchForm from "../../features/SearchForm/SearchForm.tsx";
+import SearchForm from "../SearchForm/SearchForm.tsx";
 
 
 function Header() {

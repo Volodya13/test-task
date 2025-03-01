@@ -13,3 +13,15 @@ export interface Test {
   status: Status;
   siteId: number;
 }
+
+
+
+export interface StateProps {
+  sites: Site[];
+  tests: Test[];
+}
+
+export interface ActionProps {
+  type: string;
+  payload: Site[] | Test[];
+}

@@ -1,35 +1,30 @@
-import {useState, useEffect, createContext} from "react";
-import {getSites, getTests} from "../services/api.ts";
-import {Site, Test} from "../utils/interfaces.ts";
+import {useEffect, createContext} from "react";
+import {getSites, getTests} from "../services/api";
+import {useDataReducer} from "../hooks/useDataReducer.tsx";
 
 type Props = {
   children: React.ReactNode;
 }
 
-export const DataContext = createContext({}) as unknown as React.Context<{sites: Site[], tests: Test[]}>;
+export const DataContext = createContext({sites: [], tests: [], dispatch: () => null});
 
 function DataProvider({children}: Props) {
-  const [sites, setSites] = useState<Site[]>([]);
-  const [tests, setTests] = useState<Test[]>([]);
+  const {state, dispatch} = useDataReducer();
 
   useEffect(() => {
-    if (sites.length) {
-      getSites().then((data) => setSites(data));
-    } else {
-      throw new Error('Something went wrong')
-    }
-    if (tests.length) {
-      getTests().then((data) => setTests(data));
-    } else {
-      throw new Error('Something went wrong')
-    }
+    (async () => {
+      const sites = await getSites();
+      dispatch({type: 'GET_SITES', payload: sites});
+    })();
 
-    return;
-  }, [sites, tests]);
-
+    (async () => {
+      const tests = await getTests();
+      dispatch({type: 'GET_TESTS', payload: tests});
+    })();
+  }, [dispatch]);
 
   return (
-    <DataContext.Provider value={{sites, tests}}>
+    <DataContext.Provider value={{state, dispatch}}>
       {children}
     </DataContext.Provider>
   );
