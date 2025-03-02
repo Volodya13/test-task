@@ -7,21 +7,18 @@ import DashBoard from "./pages/DashBoard.tsx";
 import Results from "./pages/Results.tsx";
 import Finalize from "./pages/Finalize.tsx";
 import DataProvider from "./contextApi/DataContext.tsx";
-import {Paths} from "./utils/enums.ts";
 import {Navigate} from "react-router";
-
-const {DASHBOARD, RESULTS, FINALIZE} = Paths;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <DataProvider>
         <Routes>
-          <Route path="/" element={<Navigate to={DASHBOARD} replace />} />
-          <Route element={<App/>}>
-            <Route index path={DASHBOARD} element={<DashBoard/>}/>
-            <Route path={`${RESULTS}/:testId`} element={<Results/>}/>
-            <Route path={`${FINALIZE}/:testId`} element={<Finalize/>}/>
+          <Route path="/" element={<App/>}>
+            <Route index element={<Navigate to="/dashboard" replace />} />
+            <Route path="dashboard" element={<DashBoard />} />
+            <Route path="dashboard/results/:testId" element={<Results />} />
+            <Route path="dashboard/finalize/:testId" element={<Finalize />} />
           </Route>
         </Routes>
       </DataProvider>

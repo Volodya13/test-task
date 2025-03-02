@@ -1,7 +1,7 @@
 import styles from './ListItem.module.css';
  import cn from 'classnames';
 import {useNavigate} from "react-router";
-import {Paths} from "../../enums.ts";
+
 
 type DataFields = {
   id: number;
@@ -34,10 +34,10 @@ function ListItem(
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (status === 'DRAFT') {
-      navigate(Paths.FINALIZE.concat(`/${id}`));
+    if (status.toLowerCase() === 'draft') {
+      navigate(`/dashboard/finalize/${id}`);
     } else {
-      navigate(Paths.RESULTS.concat(`/${id}`));
+      navigate(`/dashboard/results/${id}`);
     }
   }
 
