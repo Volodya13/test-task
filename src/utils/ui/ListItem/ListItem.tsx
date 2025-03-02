@@ -1,5 +1,7 @@
 import styles from './ListItem.module.css';
  import cn from 'classnames';
+import {useNavigate} from "react-router";
+import {Paths} from "../../enums.ts";
 
 type DataFields = {
   id: number;
@@ -18,6 +20,7 @@ interface ListItemProps extends DataFields {
 
 function ListItem(
   {
+    id,
     name,
     type,
     status,
@@ -25,9 +28,18 @@ function ListItem(
     siteColor,
     buttonText,
     buttonClassName,
-    onClick,
   }: ListItemProps
 ) {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (status === 'DRAFT') {
+      navigate(Paths.FINALIZE.concat(`/${id}`));
+    } else {
+      navigate(Paths.RESULTS.concat(`/${id}`));
+    }
+  }
 
   return (
     <li
@@ -38,7 +50,7 @@ function ListItem(
         <span className={styles.type}>{type}</span>
         <span className={cn(styles.status, styles[`status-${status}`])}>{status}</span>
         <span className={styles.siteUrl}>{siteUrl}</span>
-        <button className={cn(styles.btn, buttonClassName)} onClick={onClick}>{buttonText}</button>
+        <button className={cn(styles.btn, buttonClassName)} onClick={handleClick}>{buttonText}</button>
       </div>
     </li>
   )

@@ -19,6 +19,7 @@ function DataList() {
   const [sortBy, setSortBy] = useState<Controls>('name');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
+
   const handleSortChange = (column: Controls) => {
     if (sortBy === column) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -54,7 +55,7 @@ function DataList() {
   const statusOrderAsc = ['online', 'draft', 'paused', 'stopped'];
   const statusOrderDesc = [...statusOrderAsc].reverse();
 
-  const sortedTests = state.tests.sort((a, b) => {
+  const sortedTests = state.tests.sort((a: Tests, b: Tests) => {
     if (sortBy === 'status') {
       const order = sortOrder === 'asc' ? statusOrderAsc : statusOrderDesc;
       return order.indexOf(a.status.toLowerCase()) - order.indexOf(b.status.toLowerCase());
@@ -86,9 +87,9 @@ function DataList() {
               siteUrl={getSiteUrl(siteId)}
               siteColor={getSiteColor(siteId)}
               buttonText={getButtonText(status)}
-              buttonClassName={getButtonClassName(status)}
-              onClick={() => console.log('Clicked')}
-            />
+              buttonClassName={getButtonClassName(status)} onClick={function (): void {
+              throw new Error('Function not implemented.');
+            }}            />
           )
         )}
       </ul>
