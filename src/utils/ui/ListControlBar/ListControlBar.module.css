@@ -1,0 +1,45 @@
+.controlBar {
+  padding: 30px 15px 10px;
+  display: flex;
+  align-items: center;
+  gap: 13%;
+
+  .btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn {
+      background-color: transparent;
+      border: none;
+      color: #999999;
+      font-family: Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    &:first-child, &:last-child {
+      text-align: start;
+      flex-grow: .5;
+    }
+
+    &:last-child {
+      width: 550px;
+    }
+
+    &:nth-child(2) {
+      width: 220px;
+      justify-content: center;
+    }
+
+    &:nth-child(3) {
+      width: 100%;
+      max-width: 150px;
+    }
+
+    &:first-child {
+      width: 550px;
+    }
+  }
+}

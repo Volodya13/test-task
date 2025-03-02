@@ -21,6 +21,15 @@
     }
   }
 
+  .results {
+    color: #d1d1d1;
+    font-size: 14px;
+    position: absolute;
+    text-wrap: nowrap;
+    top: 28%;
+    right: 15px;
+  }
+
   .searchBtn {
     position: absolute;
     left: 0;

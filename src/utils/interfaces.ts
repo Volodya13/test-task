@@ -25,3 +25,5 @@ export interface ActionProps {
   type: string;
   payload: Site[] | Test[];
 }
+
+export type Controls = 'name' | 'type' | 'status' | 'site';
